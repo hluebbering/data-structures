@@ -117,7 +117,9 @@ hr {
     color: #f5f5f5;
     font-size: 9pt;
     letter-spacing: 0.5px;
-    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    background-image: linear-gradient(-128deg, #ffec61 6%, rgba(255, 181, 32, 0.93) 14%, #f59e0b 22%, #fb923c 28%, #ef4444 50%, #dc2626 58%, rgba(239, 39, 153, 0.93) 80%,  #f321d7 90%, #d946ef 100%);
+    background-image: linear-gradient(-128deg, #f9f871 6%, rgba(255, 181, 32, 0.93) 14%, #f59e0b 22%, #fb923c 28%, #ff6f91 50%, #dc2626 65%, rgba(239, 39, 153, 0.93) 80%, #f321d7 90%, #d946ef 95%);
+    background: #ff6f91;
     box-shadow: 0.875px 0.875px 1.8px 0 rgb(0 0 0 / 30%), -0.75px -0.75px 1.5px 0 hsl(216deg 16% 94%), inset -0.5px -0.5px 1px 0 rgb(0 0 0 / 30%), inset 0.5px 0.5px 1px 0 hsl(220deg 23% 95%);
     padding: 2.5pt 3.85pt;
     font-weight: 300;
@@ -140,22 +142,18 @@ hr {
 }
 
 .myhighlight3 {
-    background-image: linear-gradient(0deg, hsl(228deg 14% 89%), #fff);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%), inset 0 -1px 0 rgb(0 0 0 / 30%), inset 0 0 0px 1px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 50%), 0 2px 2px rgb(0 0 0 / 40%) !important;
-    border: 1.5px solid #e4e5ea;
     border-radius: 5px;
+    font-size: 9pt;
+    letter-spacing: 0.5px;
     background: #333;
     box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%), inset 1px 1px 1px rgb(255 255 255 / 60%), inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px 0px rgb(255 255 255 / 60%), -1px -1px 4px 0px rgb(255 255 255 / 60%), -2px -2px 8px 0px rgb(255 255 255 / 60%), 1px 1px 1px 0px rgb(12 13 18 / 6%), 1px 1px 4px 0px rgb(12 13 18 / 6%), 2px 2px 8px 0px rgb(12 13 18 / 6%);
     background-color: hsl(228deg 14% 93%);
     text-shadow: 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0.35px 0.35px 0.35px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px rgb(12 13 18 / 8%), 0 1.2px 0 rgb(255 255 255);
-    padding: 4pt 5pt;
+    color: hsl(233deg 5% 26%);
+    padding: 3pt 5pt;
     font-weight: 300;
-    line-height: 25pt;
-    font-family: 'Roboto', sans-serif;
-    font-size: 8pt;
-    letter-spacing: 0.75px;
-    text-transform: uppercase;
-    color: #60667b;
+    font-family: 'Roboto';
+    line-height: 15pt;
 }
 
 .myhighlight4 {
@@ -204,6 +202,7 @@ img.poke {
     font-weight: 500;
     border-color: #d59bf1;
     background: linear-gradient(36deg, hsl(39deg 100% 70%),hsl(12deg 100% 78%),hsl(357deg 100% 80%), hsl(341deg 86% 77%), #e694f7, hsl(324deg 100% 86%));
+    background: linear-gradient(-128deg, #ffec61 6%, rgba(255, 181, 32, 0.93) 14%, #f59e0b 22%, #fb923c 28%, #ef4444 50%, #dc2626 58%, rgba(239, 39, 153, 0.93) 80%, #f321d7 90%, #d946ef 100%);
 }
 
 #TOC {
@@ -395,16 +394,14 @@ code {
     align-items: center;
     justify-content: center;
     background-color: #ebecf0;
-    font-family: 'Roboto';
-    font-size: 10pt;
-    font-weight: 600;
-    color: hsl(214deg 100% 55%);
+    font-family: 'VT323', monospace;
+    font-size: 11pt;
+    font-weight: 500;
     box-shadow: 0.875px 0.875px 1.8px 0 rgb(0 0 0 / 30%), -0.875px -0.875px 1.8px 0 rgb(255 255 255), inset -0.5px -0.5px 1px 0 rgb(0 0 0 / 30%), inset 0.5px 0.5px 1px 0 rgb(255 255 255);
     margin: 0 4pt -1.5pt -22.5pt;
     vertical-align: bottom;
     text-shadow: 0.25px 0.25px 0.25px hsl(0deg 0% 10% / 35%), 0.2px 0.2px 0.2px hsl(227deg 12% 40%), -0.45px -0.45px 0.25px hsl(0deg 0% 100%), 0.15px -0.15px 0.15px hsl(0deg 0% 100%), 0.25px -0.15px 0.05px hsl(220deg 85% 60%), 0.35px 0.35px 0.35px hsl(227deg 12% 80%);
-        text-shadow: 0 0 0.5px #0f0b0e, 0 0 1px #df0790, 0px 0px 2px #ffffff;
-    color: #fa29ad;
+    color: #dc2626;
 }
 
 
@@ -609,7 +606,7 @@ pre.r::before {
 .hljs-keyword {
     color: hsl(183deg 100% 50%);
     font-weight: 700;
-    color: #fa29ad;
+    color: hsl(326deg 86% 65%);
 }
 
 .hljs-comment {
@@ -620,14 +617,15 @@ pre.r::before {
 
 .hljs-string {
     color: #219fd5;
-    color: hsl(219deg 45% 62%) !important;
+    color: hsl(2deg 60% 65% / 93%);
     font-weight: 400;
 }
 
 
 .hljs-keyname {
-    color: #CDBBFF !important;
     font-weight: 600 !important;
+    color: hsl(50deg 100% 80%);
+    color: hsl(10deg 85% 72%);
 }
 
 .hljs-envfunc {
@@ -673,7 +671,9 @@ span.hljs-rkeyword {
 
 .hljs-number {
     font-weight: 500;
-    color: hsl(112deg 65% 75%) !important;
+    color: hsl(112deg 65% 75%);
+    color: hsl(50deg 100% 80%);
+    color: hsl(90deg 92% 71%);
 }
 
 .hljs-keyfunc {

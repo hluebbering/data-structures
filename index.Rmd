@@ -25,7 +25,7 @@ The goal of the following project is to use Python to analyze and interact with 
 
 
 
-<span class = "myhighlight">Overview:</span> Using Python, we implement a program to process and analyze data for Pokémon Go, an augmented-reality video game played by hundreds of millions of people. The problems in this assessment focus on providing descriptive statistics for summarizing the Pokémon dataset.
+<span class = "myhighlight3">Overview:</span> Using Python, we implement a program to process and analyze data for Pokémon Go, an augmented-reality video game played by hundreds of millions of people. The problems in this assessment focus on providing descriptive statistics for summarizing the Pokémon dataset.
 
 
 
@@ -35,12 +35,7 @@ The goal of the following project is to use Python to analyze and interact with 
 
 
 
-In the Pokémon video game series, the player catches pokemon, fictional creatures trained to battle each other as part of a sport franchise.
-
-
-
-
-In the Charmander species, Charmander begins at stage 1, evolves into a Charmeleon at stage 2, and finally evolves into Charizard at stage 3.
+In the Pokémon video game series, the player catches pokemon, fictional creatures trained to battle each other as part of a sport franchise. In the Charmander species, Charmander begins at stage 1, evolves into a Charmeleon at stage 2, and finally evolves into Charizard at stage 3.
 
 
 
@@ -181,14 +176,14 @@ def filename_to_string(dna_filename):
 ```
 
 
-----
+
 
 
 <span class = "myhighlight4">Task:</span> Write the same function **using Pandas**: rather than take a list of dictionaries, this takes a Pandas DataFrame.
 
 
 
-----
+
 
 
 
