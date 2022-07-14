@@ -25,6 +25,7 @@ The goal of the following project is to use Python to analyze and interact with 
 
 
 
+
 <span class = "myhighlight">Overview:</span> Using Python, we implement a program to process and analyze data for Pokémon Go, an augmented-reality video game played by hundreds of millions of people. The problems in this assessment focus on providing descriptive statistics for summarizing the Pokémon dataset.
 
 
