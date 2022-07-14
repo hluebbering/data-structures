@@ -117,28 +117,24 @@ hr {
     color: #f5f5f5;
     font-size: 9pt;
     letter-spacing: 0.5px;
-    background-image: linear-gradient(-128deg, #ffec61 6%, rgba(255, 181, 32, 0.93) 14%, #f59e0b 22%, #fb923c 28%, #ef4444 50%, #dc2626 58%, rgba(239, 39, 153, 0.93) 80%,  #f321d7 90%, #d946ef 100%);
     background-image: linear-gradient(-128deg, #f9f871 6%, rgba(255, 181, 32, 0.93) 14%, #f59e0b 22%, #fb923c 28%, #ff6f91 50%, #dc2626 65%, rgba(239, 39, 153, 0.93) 80%, #f321d7 90%, #d946ef 95%);
-    background: #ff6f91;
-    box-shadow: 0.875px 0.875px 1.8px 0 rgb(0 0 0 / 30%), -0.75px -0.75px 1.5px 0 hsl(216deg 16% 94%), inset -0.5px -0.5px 1px 0 rgb(0 0 0 / 30%), inset 0.5px 0.5px 1px 0 hsl(220deg 23% 95%);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%), inset 1px 1px 1px hsl(0deg 0% 80% / 40%), inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px 0px rgb(255 255 255 / 60%), -1px -1px 4px 0px rgb(255 255 255 / 60%), -2px -2px 8px 0px rgb(255 255 255 / 60%), 1px 1px 1px 0px rgb(12 13 18 / 6%), 1px 1px 4px 0px rgb(12 13 18 / 6%), 2px 2px 8px 0px rgb(12 13 18 / 6%), inset -1px -1px 1px hsl(0deg 0% 0% / 20%), inset 0.5px 0.5px 1px 0 hsl(0deg 0% 100% / 25%);
     padding: 2.5pt 3.85pt;
-    font-weight: 300;
-    text-shadow: 0px 0px 1px hsl(0deg 0% 30% / 35%), 0.034em 0.034em 1px hsl(0deg 0% 75% / 50%), 0.0125px -0.125px 0px hsl(0deg 0% 100% / 85%), 0.025px 0.425px 0px hsl(0deg 0% 100% / 95%), 0.25px 0.6px 0px hsl(0deg 0% 100% / 85%), 0px -0.88px 0.0125px hsl(0deg 0% 100% / 20%), 0px 1px 0.5px hsl(0deg 0% 5% / 85%), 0.7px 1.2px 0.35px hsl(0deg 0% 5% / 85%) !important;
+    font-weight: 400;
 }
 
 .myhighlight2 {
-    border-radius: 5px;
-    font-size: 9pt;
+      font-size: 12pt;
     letter-spacing: 0.5px;
-    background: #333;
+    font-family: 'VT323', monospace;
+    border-radius: 5px;
     box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%), inset 1px 1px 1px rgb(255 255 255 / 60%), inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px 0px rgb(255 255 255 / 60%), -1px -1px 4px 0px rgb(255 255 255 / 60%), -2px -2px 8px 0px rgb(255 255 255 / 60%), 1px 1px 1px 0px rgb(12 13 18 / 6%), 1px 1px 4px 0px rgb(12 13 18 / 6%), 2px 2px 8px 0px rgb(12 13 18 / 6%);
     background-color: hsl(228deg 14% 93%);
     text-shadow: 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0.35px 0.35px 0.35px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px rgb(12 13 18 / 8%), 0 1.2px 0 rgb(255 255 255);
     color: hsl(233deg 5% 26%);
-    padding: 4pt 6pt;
+    padding: 2.125pt 4.125pt;
     font-weight: 300;
-    font-family: 'Roboto';
-    line-height: 30pt;
+    line-height: 15pt;
 }
 
 .myhighlight3 {
@@ -395,13 +391,13 @@ code {
     justify-content: center;
     background-color: #ebecf0;
     font-family: 'VT323', monospace;
-    font-size: 11pt;
     font-weight: 500;
     box-shadow: 0.875px 0.875px 1.8px 0 rgb(0 0 0 / 30%), -0.875px -0.875px 1.8px 0 rgb(255 255 255), inset -0.5px -0.5px 1px 0 rgb(0 0 0 / 30%), inset 0.5px 0.5px 1px 0 rgb(255 255 255);
     margin: 0 4pt -1.5pt -22.5pt;
     vertical-align: bottom;
-    text-shadow: 0.25px 0.25px 0.25px hsl(0deg 0% 10% / 35%), 0.2px 0.2px 0.2px hsl(227deg 12% 40%), -0.45px -0.45px 0.25px hsl(0deg 0% 100%), 0.15px -0.15px 0.15px hsl(0deg 0% 100%), 0.25px -0.15px 0.05px hsl(220deg 85% 60%), 0.35px 0.35px 0.35px hsl(227deg 12% 80%);
-    color: #dc2626;
+    text-shadow: 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0.35px 0.35px 0.35px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px rgb(12 13 18 / 8%), 0 1.2px 0 rgb(255 255 255);
+    color: hsl(233deg 5% 26%);
+    font-size: 12.125pt;
 }
 
 
@@ -415,12 +411,12 @@ code {
     width: 7pt;
     height: 7pt;
     border-radius: 18px;
-    text-shadow: 0 -1px 0 rgb(0 0 0 / 15%);
-    font-weight: 500;
-    background: linear-gradient(to top, hsl(335deg 100% 63%), hsl(328deg 100% 61%), hsl(325deg 100% 59%), hsl(320deg 100% 57%), hsl(315deg 100% 55%));
     vertical-align: middle;
     margin: 0px 4pt 2pt -12pt;
-    box-shadow: 0.875px 0.875px 1.8px 0 rgb(0 0 0 / 30%), -0.875px -0.875px 1.8px 0 rgb(255 255 255), inset -0.5px -0.5px 1px 0 rgb(0 0 0 / 30%), inset 0.5px 0.5px 1px 0 rgb(255 255 255);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%), inset 1px 1px 1px hsl(0deg 0% 80% / 40%), inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px 0px rgb(255 255 255 / 60%), -1px -1px 4px 0px rgb(255 255 255 / 60%), -2px -2px 8px 0px rgb(255 255 255 / 60%), 1px 1px 1px 0px rgb(12 13 18 / 6%), 1px 1px 4px 0px rgb(12 13 18 / 6%), 2px 2px 8px 0px rgb(12 13 18 / 6%), inset -1px -1px 1px hsl(0deg 0% 0%);
+    background: hsl(0deg 0% 22% / 98%);
+    color: hsl(0deg 0% 92%);
+    border: 0.15px solid hsl(0deg 0% 45%);
 }
 
 .datasource2 ol ul li {
@@ -557,8 +553,8 @@ pre.python::before {
     font-family: rubik;
 }
 
-pre.sql::before {
-    content: "sql";
+pre.bash::before {
+    content: "bash";
     font-size: 7.5pt;
     background: rgba(224,224,224,.2);
     box-shadow: 0 2px 0 0 rgb(0 0 0 / 20%);

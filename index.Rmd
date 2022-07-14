@@ -21,11 +21,11 @@ source("data.R")
 
 ## Introduction
 
-The goal of the following project is to use Python to analyze and interact with data in a real-world scenario. Specifically, we write Python code using loops, conditionals (if statements), functions, and string manipulation. We then use the command line to run Python scripts with parameters.
+The goal of the following project is to use Python to analyze and interact with data in a real-world scenario. Specifically, the objective involves applying Pandas, Seaborn, and Scikit-learn to process, visualize, and predict outcomes about data. We write code using loops, conditionals (if statements), functions, and string manipulation. We then use the command line to run Python scripts with parameters.
 
 
 
-<span class = "myhighlight3">Overview:</span> Using Python, we implement a program to process and analyze data for Pokémon Go, an augmented-reality video game played by hundreds of millions of people. The problems in this assessment focus on providing descriptive statistics for summarizing the Pokémon dataset.
+<span class = "myhighlight">Overview:</span> Using Python, we implement a program to process and analyze data for Pokémon Go, an augmented-reality video game played by hundreds of millions of people. The problems in this assessment focus on providing descriptive statistics for summarizing the Pokémon dataset.
 
 
 
@@ -48,7 +48,7 @@ kable(pokemon3, col.names = c("", "name", "type", "weakness", "atk", "def", "hp"
 
 
 
--------------------------
+
 
 
 
@@ -66,8 +66,16 @@ kable(pokemon2) %>% kable_styling(full_width = F, font_size = 12, html_font = "R
 
 
 
-The program reads, processes, and groups CSV data storing information about pokemon to compute descriptive statistics. 
+The program reads, processes, and groups CSV data storing information about pokemon to compute descriptive statistics. We organize the functions for solving each problem into multiple python files described below. 
 
+
+<div class = "datasource2">
+- `hw2_manual.py` is the file for you to put your implementations for solving each problem without Pandas.
+- `hw2_pandas.py` is the file for you to put your implementations for solving each problem with Pandas.
+- `hw2_test.py` is the file for you to put your own tests.
+- `cse163_utils.py` is a helper file that has code to help you test your code.
+- `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.
+</div>
 
 
 -------------------------
@@ -101,16 +109,7 @@ The built-in data structures include loops, lists, and dictionary comprehensions
 data = pd.read_csv('pokemon_box.csv')
 ```
 
-We organize the functions for solving each problem into multiple python files described below. 
 
-
-<div class = "datasource2">
-- `hw2_manual.py` is the file for you to put your implementations for solving each problem without Pandas.
-- `hw2_pandas.py` is the file for you to put your implementations for solving each problem with Pandas.
-- `hw2_test.py` is the file for you to put your own tests.
-- `cse163_utils.py` is a helper file that has code to help you test your code.
-- `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.
-</div>
 
 
 
@@ -125,7 +124,7 @@ We organize the functions for solving each problem into multiple python files de
 <div class = "datasource2">
 1. Write a function `species_count` that takes a parsed pokemon dataset and returns the number of unique species as determined by the name attribute.
 2. Write the same function using pandas: rather than take a list of dictionaries, this takes a Pandas DataFrame.
-3. Write several test functions that call species_count with different test cases and compares the output with the expected value using assert_equals.
+3. Write several test functions that call `species_count` with different test cases and compares the output with the expected value using assert_equals.
 </div>
 
 
@@ -133,46 +132,17 @@ We organize the functions for solving each problem into multiple python files de
 
 
 
-For the pokemon_test.csv file, species_count(data) should return 3.
-
-
 ```{r}
 data <- read.csv("assets/pokemon.csv")
-# tail(data)
 ```
 
 
 
-
-
-
-In the following, we begin by importing the *sys* module to support reading files. We then define the `filename_to_string` function to concatenate all lines from a file into a single string and return that string. Specifically, the function converts the contents of *dna_filename*, a file where every fourth line (starting with the second line) contains nucleotides, into a string of nucleotides. 
+In the following, we begin by defining the `filename_to_string` function to concatenate all lines from a file into a single string and return that string. Specifically, the function converts the contents of *dna_filename*, a file where every fourth line (starting with the second line) contains nucleotides, into a string of nucleotides. 
 
     
 ```python
 import sys
-
-# Function converts dna_filename into a string of nucleotides
-def filename_to_string(dna_filename):
-    
-    # Creates a file object to read data
-    inputfile = open(dna_filename)
-
-    # String of all nucleotides read from file
-    seq = ""
-
-    # Current line number (number of lines read so far)
-    line_num = 0
-
-    for line in inputfile:
-        line_num = line_num + 1
-        if line_num % 4 == 2: # 2nd, 6th, 10th line...
-            # Remove characters from end of line
-            line = line.rstrip()
-            # Concatenate line to end of current string
-            seq = seq + line
-    inputfile.close() # Close file
-    return seq
 ```
 
 
@@ -183,21 +153,22 @@ def filename_to_string(dna_filename):
 
 
 
-
-
-
-
-
 <span class = "myhighlight4">Task:</span> Write several test functions that call species_count with different test cases (pokemon_test.csv files) and compares the output with the expected value using assert_equals.
 
 
 We check our solutions by adding tests to *hw2_test.py* using the `assert_equals()` function. First, we create test CSV files (pokemon_test.csv) small enough to come up with the correct answer by hand. 
 
+Now, let's compare the output of our code to output produced from a test file small enough so that we can easily calculate the species count by hand. Using the sample data file as input to our program, we run the following command in the terminal to verify that it provides the correct answer.
 
 
+```bash
+python dna_analysis.py data\test-small.fastq
+```
 
 
-Next, we write at least one test function for each problem, giving it a descriptive name such as *test_species_count*.
+For the pokemon_test.csv file, species_count(data) should return 3. Next, we write at least one test function for each problem, giving it a descriptive name such as *test_species_count*.
+
+
 
 
 
@@ -211,45 +182,21 @@ To help test functions solved without Pandas, `cse163_utils.py` defines a parse 
 
 
 
+
+
 -------------------------
 
 
-### Main Program
+### Function 2. Max Level
+
+<div class = "datasource2">
+1. Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest `level` in the dataset.
+2. Write the same function using pandas: rather than take a list of dictionaries, this takes a Pandas DataFrame.
+3. Write several test functions that call `max_level` with different test cases and compares the output with the expected value using `assert_equals`.
+</div>
 
 
-<span class = "myhighlight4">Task:</span> 
-For this assignment, we provide the program with the name of the data file so it knows where to read data from. We do this in the main program by reading in a data file name as an argument from the command line.
-
-
-```python
-# Main program begins here
-
-# Check if user provided an argument
-if len(sys.argv) < 2:
-    print("You must supply a file name as an argument.")
-    sys.exit(2)
-
-# Save the 1st provided argument as a string
-file_name = sys.argv[1]
-
-# Open file and read all nucleotides into a string of letters
-nucleotides = filename_to_string(file_name)
-```
-
-
-Now, let's compare the output of our code to output produced from a test file small enough so that we can easily calculate the GC content by hand. Using the sample data file as input to our program, we run the following command in the terminal to verify that it provides the correct answer.
-
-
-```python
-python dna_analysis.py data\test-small.fastq
-```
-
-
-
-
-
-
-
+<span class = "myhighlight2">Task:</span> Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest `level` in the dataset.
 
 
 
@@ -257,7 +204,6 @@ python dna_analysis.py data\test-small.fastq
 
 
 -------------------------
-
 
 
 
