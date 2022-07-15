@@ -1,11 +1,12 @@
 hljs.registerLanguage("python",function(e){
   var t={
-    keyword: "and elif is global as in if from raise for except finally print import pass return exec else break not with class assert yield try while continue del or def lambda async await nonlocal|10 None",
+    keyword: "and elif is global as in if from raise for except finally import pass return exec else break not with class assert yield try while continue del or def lambda async await nonlocal|10 None",
     built_in:"Ellipsis NotImplemented",
     pykey: "parse",
     logc: "True False",
-    pkgs:  "ins mat len print",
-    pypd: "read_csv"
+    pyfunc:  "print",
+    pypd: "read_csv",
+    myfunc: "species_count"
   },
   r={cN:"meta",b:/^(>>>|\.\.\.) /},
   a={cN:"subst",b:/\{/,e:/\}/,k:t,i:/#/},
@@ -40,7 +41,7 @@ hljs.registerLanguage("python",function(e){
       c:[e.UTM,s,{b:/->/,eW:!0,k:"None"}]
     },
     {cN:"meta",b:/^[\t ]*@/,e:/$/},
-    {b:/\b(print|exec)\(/}]
+    {b:/\b(printt|exec)\(/}]
   };
 });
 

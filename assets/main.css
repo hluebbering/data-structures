@@ -294,13 +294,10 @@ pre {
     background: linear-gradient(175deg, rgba(2, 0, 36, 0) 23%, rgba(153, 153, 153, 0.3) 100%);
     border: none;
     box-shadow: 0 2px 2px #888;
-    background: #22242b;
-    background: #2d2d2d;
     padding: 10pt;
     margin-bottom: 14pt;
-    background: #303030 !important;
-
-
+    background: #212121;
+    background: #2d2d2d;
 }
 
 pre code {
@@ -308,6 +305,7 @@ pre code {
     /*font-family: Consolas;*/
     font-size: 9.75pt !important;
     color: hsl(201deg 30% 96%);
+    color: #EEFFFF;
     box-shadow: none !important;
     text-shadow: 0.6px 0.6px 0 #000000;
     text-shadow: 0 1px rgb(0 0 0 / 30%);
@@ -583,6 +581,10 @@ pre.python::before {
     font-family: rubik;
 }
 
+pre.bash {
+  background: #212121 !important;
+}
+
 pre.bash::before {
     content: "bash";
     font-size: 7.5pt;
@@ -595,7 +597,7 @@ pre.bash::before {
     float: right;
     display: flex;
     overflow: hidden;
-    width: 24px;
+    width: 30px;
     margin: 0pt -6pt;
     padding: 0.5px 2pt 0.5px 2pt;
     border-radius: 4pt;
@@ -623,18 +625,11 @@ pre.r::before {
     font-family: rubik;
 }
 
-.hljs-built_in, .hljs-models {
-    font-weight: 500;
-    color: #03648a;
-    color: hsl(197deg 100% 37% / 95%) !important;
-}
 
 .hljs-keyword {
-    /*color: hsl(183deg 100% 50%);
-    color: hsl(326deg 86% 65%);*/
-    text-shadow: 0.5px 0px 0.25px hsl(295deg 100% 20%), 0.5px 0.5px 1px hsl(0deg 0% 0%), 0px 1px 0.25px rgb(0 0 0) !important;
+  text-shadow: 0.5px 0px 0.25px hsl(295deg 100% 20%), 0.5px 0.5px 1px hsl(0deg 0% 0%), 0px 1px 0.25px rgb(0 0 0) !important;
     color: hsl(231deg 100% 74%);
-    color: hsl(288deg 100% 74%);
+    color: #C792EA;
     font-weight: 700;
 }
 
@@ -645,37 +640,47 @@ pre.r::before {
 }
 
 .hljs-string {
-    color: #219fd5;
-    color: hsl(2deg 60% 65% / 93%);
-    font-weight: 400;
-    color: hsl(300deg 75% 80%);
+  color: #98C379;
+  color: #56B6C2;
     text-shadow: 0.25px 0.25px 1px #111111, 0.25px 0.25px 0.5px black !important;
-    color: #ffa987;
-    text-shadow: 0.15px 0.15px 0.15px hsl(151deg 45% 50% / 90%), 0.75px 0.75px 0.75px hsl(0deg 0% 10% / 95%), 0.5px 0.5px 0.5px hsl(0deg 0% 0% / 95%) !important;
-    /* color: #ffa987; */
-    color: hsl(220deg 32% 60%);
-    color: hsl(205deg 40% 60%);
-    color: hsl(160deg 20% 50%);
+    color: #C3E88D;
     font-weight: 300;
 }
 
-.hljs-pykey {
-    color: hsl(300deg 75% 80%);
-    font-weight: 600;
-    color: #ffa987;
+.hljs-bashkey {
+    color: #F78C6C;
+    font-weight: 800;
 }
 
-.hljs-pypd {
-    color: #f9f871;
-    color: rgba(255, 181, 32, 0.93);
-    color: #f59e0b;
-    color: #fb923c;
-    color: #ff6f91;
-    color: #dc2626;
-    color: rgba(239, 39, 153, 0.93);
-    color: #f321d7;
-    color: #d946ef;
+.hljs-built_in, .hljs-models {
+    font-weight: 500;
+    color: #03648a;
+    color: #89DDFF;
+    color: #FFCB6B;
+}
+
+.hljs-pykey {
+    font-weight: 600;
+    color: #C792EA;
+    color: #82AAFF;
+    color: #F78C6C;
+    color: #89DDFF;
     color: hsl(346deg 100% 80%);
+}
+
+
+.hljs-pypd {
+    color: #89DDFF;
+    font-weight: 500;
+}
+
+.hljs-myfunc {
+  color: #FF5370;
+}
+
+.hljs-pyfunc {
+    color: #FFCB6B;
+    font-weight: 600;
 }
 
 .hljs-literal {
@@ -686,11 +691,8 @@ pre.r::before {
 
 .hljs-number {
     font-weight: 700;
-    color: hsl(112deg 65% 75%);
-    color: hsl(50deg 100% 80%);
-    color: hsl(90deg 92% 71%);
     text-shadow: 0.25px 0.25px 1px #111111, 0.25px 0.25px 0.5px black !important;
-    color: hsl(231deg 100% 74%);
+    color: #82AAFF;
 }
 
 .hljs-keyfunc {
