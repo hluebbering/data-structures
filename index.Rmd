@@ -19,6 +19,18 @@ source("data.R")
 ```
 
 
+
+<script src="assets/min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<script src="assets/pymin.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
 ## Introduction
 
 The goal of the following project is to use Python to analyze and interact with data in a real-world scenario. Specifically, the objective involves applying Pandas, Seaborn, and Scikit-learn to process, visualize, and predict outcomes about data. We write code using loops, conditionals (if statements), functions, and string manipulation. We then use the command line to run Python scripts with parameters.
@@ -61,8 +73,17 @@ The problems in this assessment focuses on providing descriptive statistics for 
 
 
 ```{r}
-kable(pokemon2) %>% kable_styling(full_width = F, font_size = 12, html_font = "Roboto Condensed", bootstrap_options = c("striped", "hover"))
+kable(pokemon2, escape = F, col.names = c("", "variable", "type", "description")) %>%
+  kable_styling(full_width = F, font_size = 12, html_font = "Roboto Condensed", bootstrap_options = c("striped", "hover")) %>%
+  row_spec(0, extra_css = c("text-align: left; 
+  border-bottom: 1px solid #e6e6e6; color: #111111 !important; text-transform: uppercase; 
+  letter-spacing: 1.25px; font-weight: 400; 
+  font-size: 10px;")) %>%
+  row_spec(c(1:nrow(pokemon2)), extra_css = c("border-bottom: 1px solid #f0f0f0;"))
 ```
+
+
+
 
 
 
@@ -77,6 +98,10 @@ The program reads, processes, and groups CSV data storing information about poke
 - `cse163_utils.py` is a helper file that has code to help you test your code.
 - `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.
 </div>
+
+
+
+
 
 
 -------------------------
@@ -107,6 +132,7 @@ The built-in data structures include loops, lists, and dictionary comprehensions
 
 
 ```python
+import pandas as pd
 data = pd.read_csv('pokemon_box.csv')
 ```
 
@@ -129,7 +155,7 @@ data = pd.read_csv('pokemon_box.csv')
 </div>
 
 
-<span class = "myhighlight2">Task:</span> Write a function `species_count` that takes a parsed pokemon dataset and returns the number of unique pokemon species in the dataset as determined by the name attribute **without using Pandas**.
+<span class = "myhighlight4">Task:</span> Write a function `species_count` that takes a parsed pokemon dataset and returns the number of unique pokemon species in the dataset as determined by the name attribute **without using Pandas**.
 
 
 
@@ -191,13 +217,13 @@ To help test functions solved without Pandas, `cse163_utils.py` defines a parse 
 ### Function 2. Max Level
 
 <div class = "datasource2">
-1. Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest `level` in the dataset.
+1. Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest level in the dataset.
 2. Write the same function using pandas: rather than take a list of dictionaries, this takes a Pandas DataFrame.
 3. Write several test functions that call `max_level` with different test cases and compares the output with the expected value using `assert_equals`.
 </div>
 
 
-<span class = "myhighlight2">Task:</span> Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest `level` in the dataset.
+<span class = "myhighlight4">Task:</span> Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest level in the dataset.
 
 
 

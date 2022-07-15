@@ -77,26 +77,62 @@ pokemon1 <- data.frame("id" = c(1),
 
 
 pokemon2 <- data.frame(
-  "variable" = c("id", "name", "level", "personality",
-                 "type", "weakness", "atk", "def", 
+  "d" = c(1:10),
+    # c(rep(" ", 10)),
+  "variable" = c("id ", "name", "level", "pers",
+                 "type", "wk", "atk", "def", 
                  "hp", "stage"),
   "type" = c("numeric", "string", "integer", "string",
              "string", "string", "integer", "integer",
              "integer", "integer"),
   "description" = c(
-    "a unique numeric identifier corresponding to the species of a pokemon",
+    "unique identifier corresponding to the species of a pokemon",
     "the name of the pokemon species",
     "integer level of the pokemon",
-    "one-word string describing the pokemon's personality",
-    "one-word string describing the type of the pokemon",
+    "one-word describing the personality of the pokemon",
+    "one-word describing the type of the pokemon",
     "enemy type that the pokemon is weak toward",
-    "the pokemon's attack power",
-    "the pokemon's defense power",
+    "attack power of the pokemon",
+    "defense power of the pokemon",
     "the pokemon's hit points",
     "particular developmental stage of the pokemon"))
 
+pokemon2$d <- cell_spec(
+  pokemon2$d,
+  extra_css = ("content: ''; display: inline-flex; 
+  width: 6pt; height: 6pt; border-radius: 18px;
+  margin: 2pt -10pt 0px -2pt; color: hsl(0deg 0% 92%); 
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%), inset 1px 1px 1px hsl(0deg 0% 80% / 40%), inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px 0px rgb(255 255 255 / 60%), -1px -1px 4px 0px rgb(255 255 255 / 60%), -2px -2px 8px 0px rgb(255 255 255 / 60%), 1px 1px 1px 0px rgb(12 13 18 / 6%), 1px 1px 4px 0px rgb(12 13 18 / 6%), 2px 2px 8px 0px rgb(12 13 18 / 6%), inset -1px -1px 1px hsl(0deg 0% 0%); 
+  background: hsl(0deg 0% 22% / 98%); float: right;
+  padding: 1pt !important; justify-content: center; 
+  align-items: center; font-size: 9pt; font-family: 'Inconsolata'; 
+  font-weight: 600; width: 12pt; height: 12pt;
+               border: 0.15px solid hsl(0deg 0% 45%);"))
 
 
+pokemon2$variable <- cell_spec(
+  pokemon2$variable,
+  extra_css = (
+    "float: left !important; padding: 3px 4px; background-color: #ebecf0;
+  border-radius: 6px; text-shadow: 0.6px 0.6px 0 #fff;
+  color: #61677c; font-family: 'Roboto'; font-size: 7.25pt;
+  font-weight: 500; letter-spacing: 0.25px;
+  min-width: 48pt; text-align: end;
+  background: linear-gradient(-45deg,#fdfdfd,hsl(240deg 9% 85% / 50%),#fdfdfd);
+    box-shadow: 1.5px 1.5px 2.5px #babecc, -2px -2px 5px #fff;
+    color: hsl(233deg 5% 26%);
+    text-shadow: 0.25px 0.25px 0.125px hsl(230deg 11% 48% / 75%), 0.4px 0.4px 0.35px hsl(230deg 31% 40% / 65%), 0px 1.25px 0px #fff, 0px -0.5px 0px #fff;"))
+
+
+pokemon2$type <- cell_spec(
+  pokemon2$type,
+  extra_css = ("text-shadow: 0.6px 0.6px 0 #fff; color: #61677c;
+  font-weight: 300; font-family: Roboto Condensed !important;"))
+  
+pokemon2$description <- cell_spec(
+  pokemon2$description,
+  extra_css = ("font-family: Roboto Condensed !important;
+  color: #111111 !important; font-weight: 400; opacity: 0.85;"))
 
 
 
