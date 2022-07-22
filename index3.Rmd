@@ -1,0 +1,254 @@
+---
+title: "Data Programming with Python"
+author: "Hannah Luebbering"
+date: "July 04, 2022"
+output: 
+  html_document: 
+    css: "assets/main.css"
+    toc: yes
+    toc_float: yes
+knit: (function(inputFile, encoding) {rmarkdown::render(inputFile, encoding = encoding, output_dir = "docs") })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(kableExtra)
+library(knitr)
+
+source("data.R")
+```
+
+
+
+<script src="assets/min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<script src="assets/pymin.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+## Introduction
+
+The goal of the following project is to use Python to analyze and interact with data in a real-world scenario. Specifically, the objective involves applying Pandas, Seaborn, and Scikit-learn to process, visualize, and predict outcomes about data. We write code using loops, conditionals (if statements), functions, and string manipulation. We then use the command line to run Python scripts with parameters.
+
+
+
+
+<span class = "myhighlight">Overview:</span> Using Python, we implement a program to process and analyze data for Pokémon Go, an augmented-reality video game played by hundreds of millions of people. The problems in this assessment focus on providing descriptive statistics for summarizing the Pokémon dataset.
+
+
+
+
+
+### Background
+
+
+
+K-means clustering is a popular machine learning and data mining algorithm that discovers possible clusters within a dataset. Finding these clusters can often reveal interesting and meaningful information in the distribution of data. K-means clustering is used for a number of different applications, such as recognizing hand-written digits, which we will be implementing in this assignment.
+
+
+```{r}
+kable(pokemon3, col.names = c("", "name", "type", "weakness", "atk", "def", "hp", "stage"), escape = FALSE, align = "r") %>%
+  kable_styling(full_width = F, font_size = 12, html_font = "Roboto Condensed", bootstrap_options = c("striped", "hover")) %>%
+  row_spec(0, extra_css = c("text-align: right; font-size: 11pt; letter-spacing: 0.25px; text-shadow: 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0.35px 0.35px 0.35px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px hsl(0deg 0% 0% / 90%), 0 1.2px 0 hsl(0deg 0% 0%); background-color: hsl(0deg 0% 22% / 98%); font-family: 'VT323', monospace; color: hsl(0deg 0% 92%); border: 0.15px solid hsl(0deg 0% 45%); font-weight: 300; border: none;")) %>%
+  column_spec(2, extra_css = c("font-size: 11pt; letter-spacing: 0.25px; text-shadow: 0.125px 0.125px 0.125px hsl(233deg 5% 26% / 85%), 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px hsl(0deg 0% 90% / 90%), 0.25px 0.25px 0px hsl(0deg 0% 60%); color: hsl(0deg 0% 22% / 98%); font-family: 'VT323', monospace; font-weight: 300;"))
+```
+
+
+
+
+
+
+
+
+#### Data Files
+
+
+The problems in this assessment focuses on providing descriptive statistics for summarizing pokemon data, such as computing the mean or count of a certain column. Specifically, we work with `pokemon_box.csv`, a large CSV file that stores data about a player’s pokemon in the following format.
+
+
+```{r}
+kable(pokemon2, escape = F, col.names = c("", "variable", "type", "description")) %>%
+  kable_styling(full_width = F, font_size = 12, html_font = "Roboto Condensed", bootstrap_options = c("striped", "hover")) %>%
+  row_spec(0, extra_css = c("text-align: left; 
+  border-bottom: 1px solid #e6e6e6; color: #111111 !important; text-transform: uppercase; 
+  letter-spacing: 1.25px; font-weight: 400; 
+  font-size: 10px;")) %>%
+  row_spec(c(1:nrow(pokemon2)), extra_css = c("border-bottom: 1px solid #f0f0f0;"))
+```
+
+
+
+
+
+
+
+The program reads, processes, and groups CSV data storing information about pokemon to compute descriptive statistics. We organize the functions for solving each problem into multiple python files described below. 
+
+
+<div class = "datasource2">
+- `hw2_manual.py` is the file for you to put your implementations for solving each problem without Pandas.
+- `hw2_pandas.py` is the file for you to put your implementations for solving each problem with Pandas.
+- `hw2_test.py` is the file for you to put your own tests.
+- `cse163_utils.py` is a helper file that has code to help you test your code.
+- `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.
+</div>
+
+
+
+
+
+
+-------------------------
+
+
+
+## Program Implementation
+
+
+Using Python built-in data structures and math functions, we write the following 6 functions that take a list of dictionaries representing the parsed pokemon dataset. 
+
+
+```python
+data = parse('pokemon_box.csv')
+
+print('Number of species:', hw2_manual.species_count(data))
+print('Highest level pokemon:', hw2_manual.max_level(data))
+print('Low-level Pokemon:', hw2_manual.filter_range(data, 1, 9))
+print('Average attack for fire types:', hw2_manual.mean_attack_for_type(data, 'fire'))
+print('Count of each Pokemon type:')
+print(hw2_manual.count_types(data))
+print('Average attack for each Pokemon type:')
+print(hw2_manual.mean_attack_per_type(data))
+```
+
+
+The built-in data structures include loops, lists, and dictionary comprehensions. Alternately, we can write the above functions to take in a Pandas DataFrame representing the parsed pokemon dataset.
+
+
+```python
+import pandas as pd
+data = pd.read_csv('pokemon_box.csv')
+```
+
+
+
+
+
+
+
+-------------------------
+
+
+
+### Function 1. Species Count
+
+<div class = "datasource2">
+1. Write a function `species_count` that takes a parsed pokemon dataset and returns the number of unique species as determined by the name attribute.
+2. Write the same function using pandas: rather than take a list of dictionaries, this takes a Pandas DataFrame.
+3. Write several test functions that call `species_count` with different test cases and compares the output with the expected value using assert_equals.
+</div>
+
+
+<span class = "myhighlight4">Task:</span> Write a function `species_count` that takes a parsed pokemon dataset and returns the number of unique pokemon species in the dataset as determined by the name attribute **without using Pandas**.
+
+
+
+```{r}
+data <- read.csv("assets/pokemon.csv")
+```
+
+
+
+In the following, we begin by defining the `filename_to_string` function to concatenate all lines from a file into a single string and return that string. Specifically, the function converts the contents of *dna_filename*, a file where every fourth line (starting with the second line) contains nucleotides, into a string of nucleotides. 
+
+    
+```python
+import sys
+```
+
+
+
+
+
+<span class = "myhighlight4">Task:</span> Write the same function **using Pandas**: rather than take a list of dictionaries, this takes a Pandas DataFrame.
+
+
+
+<span class = "myhighlight4">Task:</span> Write several test functions that call species_count with different test cases (pokemon_test.csv files) and compares the output with the expected value using assert_equals.
+
+
+We check our solutions by adding tests to *hw2_test.py* using the `assert_equals()` function. First, we create test CSV files (pokemon_test.csv) small enough to come up with the correct answer by hand. 
+
+Now, let's compare the output of our code to output produced from a test file small enough so that we can easily calculate the species count by hand. Using the sample data file as input to our program, we run the following command in the terminal to verify that it provides the correct answer.
+
+
+```bash
+python dna_analysis.py data\test-small.fastq
+```
+
+
+For the pokemon_test.csv file, species_count(data) should return 3. Next, we write at least one test function for each problem, giving it a descriptive name such as *test_species_count*.
+
+
+
+
+
+To help test functions solved without Pandas, `cse163_utils.py` defines a parse function that takes a filename and returns the dataset as a list of dictionaries. To help test functions solved with Pandas, call pd.read_csv to return the dataset as a DataFrame.
+
+
+
+
+
+
+
+
+
+
+
+-------------------------
+
+
+### Function 2. Max Level
+
+<div class = "datasource2">
+1. Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest level in the dataset.
+2. Write the same function using pandas: rather than take a list of dictionaries, this takes a Pandas DataFrame.
+3. Write several test functions that call `max_level` with different test cases and compares the output with the expected value using `assert_equals`.
+</div>
+
+
+<span class = "myhighlight4">Task:</span> Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest level in the dataset.
+
+
+
+
+
+
+-------------------------
+
+
+
+<div class = "datasource2">
+<ol><li value = "1">
+species_count
+</li></ol>
+</div>
+
+
+
+
+
+-------------------------
+
+
+
+
+
+
+
+

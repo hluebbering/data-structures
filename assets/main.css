@@ -630,6 +630,7 @@ pre.r::before {
   text-shadow: 0.5px 0px 0.25px hsl(295deg 100% 20%), 0.5px 0.5px 1px hsl(0deg 0% 0%), 0px 1px 0.25px rgb(0 0 0) !important;
     color: hsl(231deg 100% 74%);
     color: #C792EA;
+    color: #fb8c6a;
     font-weight: 700;
 }
 
@@ -649,6 +650,7 @@ pre.r::before {
 
 .hljs-bashkey {
     color: #F78C6C;
+    color: #C792EA;
     font-weight: 800;
 }
 

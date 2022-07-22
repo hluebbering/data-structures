@@ -206,32 +206,8 @@ print(value)  # 2.718281801
 -------------------------
 
 
-## Functions + Lists
 
 
-<span class = "myhighlight">Learning objective:</span> Read, process, and group CSV data to compute descriptive statistics with and without Pandas.
-
-- `hw2_manual.py` is the file for you to put your implementations for solving each problem without Pandas.
-- `hw2_pandas.py` is the file for you to put your implementations for solving each problem with Pandas.
-- `hw2_test.py` is the file for you to put your own tests. The Run button executes this program.
-- `cse163_utils.py` is a helper file that has code to help you test your code.
-- `pokemon_box.csv` is a large CSV file that stores information about pokemon.
-- `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.
-- `PandasWordbank.ipynb` is a Jupyter Notebook that reviews all of the Pandas features needed for this assessment. Feel free to edit this Jupyter Notebook to prototype ideas and explore the data.
-- `pets.csv` is the tiny example dataset used only by the PandasWordbank.ipynb
-
-
--------------------------
-
-
-
-
-## File IO + Dictionaries
-
-
-
-
-## Sets & Sorting
 
 
 
