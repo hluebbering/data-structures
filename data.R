@@ -1,36 +1,92 @@
-## load libraries
-
+## Load libraries
 library(kableExtra)
 library(knitr)
+library(magick)
+library(webshot)
+
+## Table 1. Data Types
+data_types <- data.frame(
+  "expression" = c(
+    "42",
+    "42 + 91 / 3.0",
+    "42 / 5 + 2.0",
+    "True",
+    "42 < 45",
+    "not 42 < 91",
+    '"May the force be with you."',
+    "float(3) < 9"
+  ),
+  "resultant value" = c(
+    "42",
+    "72.33333",
+    "10.4",
+    "True",
+    "True",
+    "False",
+    '"May the force be with you."',
+    "True"
+  ),
+  "data type" = c(
+    "integer",
+    "float",
+    "float",
+    "boolean",
+    "boolean",
+    "boolean",
+    'string',
+    "boolean"
+  )
+)
+
+kable(data_types, col.names = c(
+  "Expression", "Resultant Value", "Data Type")) %>%
+  kable_styling(full_width = F, font_size = 12, 
+                html_font = "Roboto Condensed", 
+                bootstrap_options = c("striped", "hover")) %>%
+  save_kable(file = "assets/static/data_type.html")
+
+webshot::webshot("assets/static/data_type.html", 
+                 file= "assets/static/data_type.png", 
+                 vwidth = 400, vheight = 100, zoom = 12, 
+                 expand = 20)
 
 
-###### TABLES ######
 
-## Table 1.
-df1 <- data.frame(
-  "expression" = c("42", "42 + 91 / 3.0", 
-                   "42 / 5 + 2.0", "True", 
-                   "42 < 45", "not 42 < 91", 
-                   '"May the force be with you."', 
-                   "float(3) < 9"), 
-  "resultant value" = c("42", "72.33333", 
-                        "10.4", "True", "True", 
-                        "False", 
-                        '"May the force be with you."', 
-                        "True"), 
-  "data type" = c("integer", "float", "float", 
-                  "boolean", "boolean", "boolean", 
-                  'string', "boolean"))
 
-## Table 2 + 3.
-df2 <- data.frame(
-  "List" = c("[0, 1, 2, 3]", 
-             "[-4, -3, -2, -1, 0]", 
-             "[25, 20, 15, 10, 5]"), 
-  "Range Call" = c("list(range(0, 4, 1))", 
-                   "list(range(-4, 1, 1))", 
-                   "list(range(25, 0, -5))"))
-df3 <- data.frame(
+
+## Table 2. List to Range Function
+list_to_range <- data.frame(
+  "List" = c("[0, 1, 2, 3]",
+             "[-4, -3, -2, -1, 0]",
+             "[25, 20, 15, 10, 5]"),
+  "Range Call" = c(
+    "list(range(0, 4, 1))",
+    "list(range(-4, 1, 1))",
+    "list(range(25, 0, -5))"
+  )
+)
+
+list_to_range <- kable(list_to_range, col.names = c("List", "Range"), escape = T) %>%
+  kable_styling(full_width = F, font_size = 12, 
+                html_font = "Roboto Condensed", 
+                bootstrap_options = c("striped", "hover")) %>%
+  column_spec(c(1:2), width = "7cm") %>%
+  column_spec(1, extra_css = c("opacity: 0.65;")) %>%
+  row_spec(0, extra_css = c("text-transform: uppercase; font-weight: 600;
+                            font-family: Roboto; font-size: 8pt; 
+                            letter-spacing: 0.5px; border-bottom: 1px solid #f0f0f0;"))
+
+save_kable(list_to_range, 
+           file = "assets/static/list.html")
+webshot::webshot("assets/static/list.html", 
+                 file= "assets/static/list.png", 
+                 vwidth = 600, vheight = 100, 
+                 zoom = 12, expand = 20)
+
+
+
+## Table 3. Range to List Function
+range_to_list <- data.frame(
   "Range Call" = c("list(range(0, 10, 2))", 
                    "list(range(2, 11, 3))", 
                    "list(range(600, 0, -100))"), 
@@ -38,7 +94,7 @@ df3 <- data.frame(
              "[2, 5, 8]", 
              "[600, 500, 400, 300, 200, 100]"))
 
-kbl2 <- kable(df2, col.names = c("List", "Range")) %>%
+range_to_list <- kable(range_to_list, col.names = c("Range", "List"), escape = T) %>%
   kable_styling(full_width = F, font_size = 12, 
                 html_font = "Roboto Condensed", 
                 bootstrap_options = c("striped", "hover")) %>%
@@ -48,15 +104,13 @@ kbl2 <- kable(df2, col.names = c("List", "Range")) %>%
                             font-family: Roboto; font-size: 8pt; 
                             letter-spacing: 0.5px; border-bottom: 1px solid #f0f0f0;"))
 
-kbl3 <- kable(df3, col.names = c("Range", "List")) %>%
-  kable_styling(full_width = F, font_size = 12, 
-                html_font = "Roboto Condensed", 
-                bootstrap_options = c("striped", "hover")) %>%
-  column_spec(c(1:2), width = "7cm") %>%
-  column_spec(1, extra_css = c("opacity: 0.65;")) %>%
-  row_spec(0, extra_css = c("text-transform: uppercase; font-weight: 600;
-                            font-family: Roboto; font-size: 8pt; 
-                            letter-spacing: 0.5px; border-bottom: 1px solid #f0f0f0;"))
+save_kable(range_to_list, 
+           file = "assets/static/range.html")
+webshot::webshot("assets/static/range.html", 
+                 file= "assets/static/range.png", 
+                 vwidth = 600, vheight = 100, 
+                 zoom = 12, expand = 20)
+
 
 
 

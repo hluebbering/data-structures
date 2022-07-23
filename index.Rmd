@@ -48,8 +48,20 @@ The goal of the following project is to use Python to analyze and interact with 
 
 
 
-In the Pokémon video game series, the player catches pokemon, fictional creatures trained to battle each other as part of a sport franchise. In the Charmander species, Charmander begins at stage 1, evolves into a Charmeleon at stage 2, and finally evolves into Charizard at stage 3.
+K-means clustering is a popular machine learning and data mining algorithm that discovers possible clusters within a dataset. Finding these clusters often reveals meaningful information from the data distribution. K-means clustering is used for a number of different applications, such as recognizing hand-written digits, which we will be implementing in this assignment.
 
+
+K-Means Clustering Overview
+K-means clustering works in four steps:
+
+<div class = "datasource2">
+
+Initialize some number (kk) of cluster centers (centroids).
+For each data point in the dataset, assign it to the closest centroid.
+Update the locations of the centroids to be the average of all the points assigned to that cluster.
+Repeat steps 2 and 3 until convergence.
+
+</div>
 
 
 ```{r}
