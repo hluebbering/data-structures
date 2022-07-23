@@ -75,7 +75,7 @@ print("Root 2: ", root2)  # 1.30369
 ### Problem 2
 
 
-2. Use a for loop to print the decimal representations of the following fractions, each on their own line: $\left\{\frac{1}{2},\frac{1}{3}, \ldots , \frac{1}{10} \right\}$.
+2. Use a for loop to print the decimal representations of the following fractions, each on their own line: $\left(\frac{1}{2}, \frac{1}{3}, \ldots , \frac{1}{10} \right)$
 
 
 ```python
@@ -90,10 +90,10 @@ for denom in range(2, 11, 1):
 
 ### Problem 3 
 
-3. Use a for loop to compute the $10$th triangular number. The $n$th triangular number is calculated by $\frac{n(n+1)}{2}$. 
+3. Use a for loop to compute the $10th$ triangular number. The $nth$ triangular number is calculated by $\dfrac{n(n+1)}{2}$
 
 
-The following solution should correctly calculate the $11$th, $12$th, $\ldots$,  triangular number by changing the variable $n$ for any number greater than $0$.
+The following solution should correctly calculate the $11th$, $12th$, $\ldots$,  triangular number by changing the variable $n$ for any number greater than $0$.
 
 
 ```python
@@ -107,6 +107,7 @@ print("Triangular number", n, "via formula:", n * (n + 1) / 2)
 
 
 -------------------------
+
 
 ### Problem 4
 
