@@ -11,9 +11,14 @@ knit: (function(inputFile, encoding) {rmarkdown::render(inputFile, encoding = en
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, out.width = "80%")
 library(kableExtra)
 library(knitr)
+library(ggplot2)
+library(hrbrthemes)
+library(lubridate)
+library(GGally)
+library(ggrepel)
 
 source("data.R")
 ```
@@ -22,19 +27,8 @@ source("data.R")
 
 <script src="assets/min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
-
 <script src="assets/pymin.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-
-
-
-
-
-## Introduction
-
-The goal of the following project is to use Python to analyze and interact with data in a real-world scenario. Specifically, the objective involves applying Pandas, Seaborn, and Scikit-learn to process, visualize, and predict outcomes about data. We write code using loops, conditionals (if statements), functions, and string manipulation. We then use the command line to run Python scripts with parameters.
-
 
 
 
@@ -44,199 +38,179 @@ The goal of the following project is to use Python to analyze and interact with 
 
 
 
-### Background
+## Background
 
 
 
 K-means clustering is a popular machine learning and data mining algorithm that discovers possible clusters within a dataset. Finding these clusters often reveals meaningful information from the data distribution. K-means clustering is used for a number of different applications, such as recognizing hand-written digits, which we will be implementing in this assignment.
 
 
-K-Means Clustering Overview
+### K-Means Clustering Overview
+
+<div class = "roundedlist">
 K-means clustering works in four steps:
 
-<div class = "datasource2">
-
-Initialize some number (kk) of cluster centers (centroids).
-For each data point in the dataset, assign it to the closest centroid.
-Update the locations of the centroids to be the average of all the points assigned to that cluster.
-Repeat steps 2 and 3 until convergence.
+1. Initialize some number $k$ of cluster centers, also called `centroids`.
+2. For each data point in the dataset, assign it to the closest centroid.
+3. Update the locations of the centroids to be the average of all the points assigned to that cluster.
+4. Repeat steps 2 and 3 until convergence.
 
 </div>
 
 
-```{r}
-kable(pokemon3, col.names = c("", "name", "type", "weakness", "atk", "def", "hp", "stage"), escape = FALSE, align = "r") %>%
-  kable_styling(full_width = F, font_size = 12, html_font = "Roboto Condensed", bootstrap_options = c("striped", "hover")) %>%
-  row_spec(0, extra_css = c("text-align: right; font-size: 11pt; letter-spacing: 0.25px; text-shadow: 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0.35px 0.35px 0.35px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px hsl(0deg 0% 0% / 90%), 0 1.2px 0 hsl(0deg 0% 0%); background-color: hsl(0deg 0% 22% / 98%); font-family: 'VT323', monospace; color: hsl(0deg 0% 92%); border: 0.15px solid hsl(0deg 0% 45%); font-weight: 300; border: none;")) %>%
-  column_spec(2, extra_css = c("font-size: 11pt; letter-spacing: 0.25px; text-shadow: 0.125px 0.125px 0.125px hsl(233deg 5% 26% / 85%), 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px hsl(0deg 0% 90% / 90%), 0.25px 0.25px 0px hsl(0deg 0% 60%); color: hsl(0deg 0% 22% / 98%); font-family: 'VT323', monospace; font-weight: 300;"))
-```
+<span class = "myhighlight4"> Note.</span> The data points do not change. Only the locations of the centroids change with each iteration. As the centroids move, the set of data points closest to each centroid changes.
 
 
-
-
-
-
-
-
-#### Data Files
-
-
-The problems in this assessment focuses on providing descriptive statistics for summarizing pokemon data, such as computing the mean or count of a certain column. Specifically, we work with `pokemon_box.csv`, a large CSV file that stores data about a player’s pokemon in the following format.
+Below is an example of a single run of the K-means clustering.
 
 
 ```{r}
-kable(pokemon2, escape = F, col.names = c("", "variable", "type", "description")) %>%
-  kable_styling(full_width = F, font_size = 12, html_font = "Roboto Condensed", bootstrap_options = c("striped", "hover")) %>%
-  row_spec(0, extra_css = c("text-align: left; 
-  border-bottom: 1px solid #e6e6e6; color: #111111 !important; text-transform: uppercase; 
-  letter-spacing: 1.25px; font-weight: 400; 
-  font-size: 10px;")) %>%
-  row_spec(c(1:nrow(pokemon2)), extra_css = c("border-bottom: 1px solid #f0f0f0;"))
+# Step 1. Initial Centroid Placement
+# Step 2. Update Assignments
+# Step 3. Update Centroid Location
 ```
 
 
+As with many machine learning techniques, this algorithm consists of a vast list of terminology which we define in a bit more detail below.
 
 
 
 
-
-The program reads, processes, and groups CSV data storing information about pokemon to compute descriptive statistics. We organize the functions for solving each problem into multiple python files described below. 
-
-
-<div class = "datasource2">
-- `hw2_manual.py` is the file for you to put your implementations for solving each problem without Pandas.
-- `hw2_pandas.py` is the file for you to put your implementations for solving each problem with Pandas.
-- `hw2_test.py` is the file for you to put your own tests.
-- `cse163_utils.py` is a helper file that has code to help you test your code.
-- `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.
-</div>
+#### Distance
 
 
+The Euclidean distance, which indicates a straight line, is a simple way to calculate how close a data point is to a centroid. We calculate the euclidean distance using the **Pythagorean theorem**, defined as follows. For two points $a = \left[a_1, a_2, \ldots, a_n\right]$ and $b = \left[b_1, b_2, \ldots, b_n\right]$, where $n$ is the current dimension, we define the euclidean distance between both points as 
+
+
+$$
+\begin{align}
+D(a, b) = \sqrt{\left(a_1 - b_1\right)^2 + \left(a_2 - b_2\right)^2 + \ldots + \left(a_n - b_n\right)^2}
+\end{align}
+$$
 
 
 
-
--------------------------
-
+<span class = "myhighlight2">Example 1. Distance</span> Consider the two data points from a $3$-dimensional dataset: $x_1 = \left[-2, -1, -4\right]$ and $x_2 = \left[10, -5, 5\right]$. We calculate the distance between $x_1$ and $x_2$ as 
 
 
-## Program Implementation
+$$
+\begin{align}
+D(x_1, x_2) &= 
+\sqrt{(-2 - 10)^2 + (-1 + 5)^2 + (-4 - 5)^2} = \sqrt{241}
+\end{align}
+$$
 
 
-Using Python built-in data structures and math functions, we write the following 6 functions that take a list of dictionaries representing the parsed pokemon dataset. 
+#### Clusters 
 
-
-```python
-data = parse('pokemon_box.csv')
-
-print('Number of species:', hw2_manual.species_count(data))
-print('Highest level pokemon:', hw2_manual.max_level(data))
-print('Low-level Pokemon:', hw2_manual.filter_range(data, 1, 9))
-print('Average attack for fire types:', hw2_manual.mean_attack_for_type(data, 'fire'))
-print('Count of each Pokemon type:')
-print(hw2_manual.count_types(data))
-print('Average attack for each Pokemon type:')
-print(hw2_manual.mean_attack_per_type(data))
-```
-
-
-The built-in data structures include loops, lists, and dictionary comprehensions. Alternately, we can write the above functions to take in a Pandas DataFrame representing the parsed pokemon dataset.
-
-
-```python
-import pandas as pd
-data = pd.read_csv('pokemon_box.csv')
-```
+A cluster is a collection of points that are part of the same group. For k-means, every point is part of a cluster. So as the algorithm progresses and the centroids shift, points might change which cluster they're grouped in, even though the point itself does not move. 
 
 
 
-
-
-
-
--------------------------
-
-
-
-### Function 1. Species Count
-
-<div class = "datasource2">
-1. Write a function `species_count` that takes a parsed pokemon dataset and returns the number of unique species as determined by the name attribute.
-2. Write the same function using pandas: rather than take a list of dictionaries, this takes a Pandas DataFrame.
-3. Write several test functions that call `species_count` with different test cases and compares the output with the expected value using assert_equals.
-</div>
-
-
-<span class = "myhighlight4">Task:</span> Write a function `species_count` that takes a parsed pokemon dataset and returns the number of unique pokemon species in the dataset as determined by the name attribute **without using Pandas**.
-
+<span class = "myhighlight2">Example 2. Clusters</span>
 
 
 ```{r}
-data <- read.csv("assets/pokemon.csv")
+# blue points = 
+# red points = 
+# green points = 
 ```
 
 
+In the above image, all blue points are grouped in `cluster1`, all red points are grouped in `cluster2`, and all green points are group in `cluster3`.
 
-In the following, we begin by defining the `filename_to_string` function to concatenate all lines from a file into a single string and return that string. Specifically, the function converts the contents of *dna_filename*, a file where every fourth line (starting with the second line) contains nucleotides, into a string of nucleotides. 
+
+
+#### Centroids
+
+A centroid is the center of a cluster. In K-means, we assume that the centroid of a cluster is the average location of all the points in that cluster. This is equivalent to the average of the data points' components in each dimension. So if we have three $n$-dimensional points $a$, $b$, and $c$, we define the average as
+
+
+$$
+\mathit{average} = 
+\left[
+\frac{a_1 + b_1 + c_1}{3}, \frac{a_2 + b_2 + c_2}{3}, \frac{a_3 + b_3 + c_3}{3}
+\right]
+$$
+
+
+
+
+<span class = "myhighlight2">Example 3. Centroids</span> Suppose a cluster contains the three $2$-dimensional points $x_1 = \left[1, 1\right]$, $x_2 = \left[2, 3\right]$, and $x_3 = \left[3, 2\right]$. We calculate the centroid for this cluster as $c = \left[\tfrac{1 + 2 + 3}{3}, \tfrac{1 + 3 + 2}{3}\right]$. 
+
 
     
+```{r}
+data_points = data.frame(
+  "points" = c("x1", "x2", "x3", "centroid"),
+  "label" = c("(1, 1)", "(2, 3)", "(3, 2)", "Centroid"),
+  "x" = c(1, 2, 3, 2),
+  "y" = c(1, 3, 2, 2))
+
+data_points_plot <- 
+  ggplot(data = data_points, mapping = aes(x = x, y = y, label = label)) +
+  geom_point(mapping = aes(fill = points), pch = 21, size = 3.25, alpha = 0.9, color = "#030404", stroke = 0.5) +
+  geom_text_repel(point.padding = 5, family = "Roboto Condensed", size = 3.75, fontface = "plain") +
+  scale_fill_manual(values = c(
+    "black", "#61cad1", "#cae278", "#ff99b1",
+    # extra colors
+    "#F0BE43", "#c757c7", "#ff5370")) +
+  theme_ipsum_rc(axis_text_size = 10) + xlim(c(0, 4)) + ylim(c(0, 4)) +
+  theme(axis.title.x = element_blank(), axis.title.y = element_blank())
+
+
+
+
+ragg::agg_png(filename = "assets/static/centroid_example.png", width = 7085, height = 4295, units = "px", res = 900)
+data_points_plot
+invisible(dev.off())
+knitr::include_graphics("assets/static/centroid_example.png")
+```
+
+
+
+The above image is a graphical representation of these three points and their centroids.
+
+
+
+
+
+
+
+#### Convergence
+
+
+An algorithm converges if the locations of all centroids do not change much between two iterations, e.g. within some threshold of $1 \times 10^{-5}$.
+
+
+
+
+<span class = "myhighlight2">Example 4. Convergence</span> Suppose we have two, $2$-dimensional centroids $c_1 = \left[0.45132, -0.99134\right]$ and $c_2 = \left[-0.34135, -2.3525\right]$.
+
 ```python
-import sys
+c1 = [0.45132, -0.99134]
+c2 = [-0.34135, -2.3525]
+```
+
+After running the next iteration of the algorithm, the centroids are updated as follows.
+
+
+```python
+c1 = [1.43332, -1.9334]
+c2 = [-1.78782, -2.3523]
 ```
 
 
+We say that the algorithm has NOT converged since the location of the two centroids are very different between iterations. On the other hand, suppose that the new locations of the centroids are instead updated as follows.
 
 
-
-<span class = "myhighlight4">Task:</span> Write the same function **using Pandas**: rather than take a list of dictionaries, this takes a Pandas DataFrame.
-
-
-
-<span class = "myhighlight4">Task:</span> Write several test functions that call species_count with different test cases (pokemon_test.csv files) and compares the output with the expected value using assert_equals.
-
-
-We check our solutions by adding tests to *hw2_test.py* using the `assert_equals()` function. First, we create test CSV files (pokemon_test.csv) small enough to come up with the correct answer by hand. 
-
-Now, let's compare the output of our code to output produced from a test file small enough so that we can easily calculate the species count by hand. Using the sample data file as input to our program, we run the following command in the terminal to verify that it provides the correct answer.
-
-
-```bash
-python dna_analysis.py data\test-small.fastq
+```python
+c1 = [0.45132, -0.99134]
+c2 = [-0.34135, -2.3524]
 ```
 
 
-For the pokemon_test.csv file, species_count(data) should return 3. Next, we write at least one test function for each problem, giving it a descriptive name such as *test_species_count*.
-
-
-
-
-
-To help test functions solved without Pandas, `cse163_utils.py` defines a parse function that takes a filename and returns the dataset as a list of dictionaries. To help test functions solved with Pandas, call pd.read_csv to return the dataset as a DataFrame.
-
-
-
-
-
-
-
-
-
-
-
--------------------------
-
-
-### Function 2. Max Level
-
-<div class = "datasource2">
-1. Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest level in the dataset.
-2. Write the same function using pandas: rather than take a list of dictionaries, this takes a Pandas DataFrame.
-3. Write several test functions that call `max_level` with different test cases and compares the output with the expected value using `assert_equals`.
-</div>
-
-
-<span class = "myhighlight4">Task:</span> Write a function `max_level` that takes a parsed pokemon dataset and returns a two-element tuple of the `(name, level)` of the pokemon with the highest level in the dataset.
-
+If the new locations of the centroids the above, we say that the algorithm has converged since the locations of the two centroids are very similar between iterations.
 
 
 
@@ -246,13 +220,105 @@ To help test functions solved without Pandas, `cse163_utils.py` defines a parse 
 
 
 
+### K-Means Clustering Algorithm
+
+
+The **pseudo code** for the K-means algorithm is as follows.
+
+
+
+```
+data = Load Data
+centroids = Randomly Created K Centroids
+
+while centroids not converged:
+  for each data point:
+    assign data point to closest centroid
+  for each centroid:
+    set new centroid location as the mean of
+    all points in this cluster
+```
+
+
+The initial frame (step0) is the initialization: two randomly chosen centroids are drawn as an X in blue (centroid 0) and red (centroid 1). In the following steps, (step1 through step6):
+
+- Data points are assigned to whichever centroid is closest (and colored accordingly),
+- Centroid locations are adjusted based on the mean of the points assigned to them.
+
+
+This process is repeated until the centroids do not move anymore. As we progress through the steps, and especially in the later ones, the centroids do not move as much between steps. Throughout the algorithm, the data points never move but they may be assigned to different centroids as they are updated.
+
+
+
+
+-------------------------
+
+
+
+
+## Part 1. The Algorithm
+
+
+<span class = "myhighlight">Objective.</span> Design and implement a k-means clustering algorithm in Python.
+
+
+Specifically, we write the K-means clustering algorithm in the `kmeans.py` file and then run the program on various datasets contained in a nearby directory. To implement the algorithm, we work with the data structures `data` and `centroids`.
+
 <div class = "datasource2">
-<ol><li value = "1">
-species_count
-</li></ol>
+1. `data`: A list of data points, where each data point is a list of numeric float values.
+2. `centroids`: A dictionary of centroids, where the keys are strings (centroid names) and the values are lists (centroid locations).
+
 </div>
 
 
+For example, consider the following data structures.
+
+
+$$
+\begin{align}
+&\mathbb{data} =
+\left[\small{
+\left[0.34, -0.2, 1.13, 4.3 \right], 
+\left[5.1, -12.6, -7, 1.9 \right], 
+\left[-15.6, 0.06, -7.1, 11.2 \right]
+}\right] 
+\\
+&\mathbb{centroids} = 
+\left\{\small{
+\begin{aligned}
+&\texttt{centroid1}:
+\left[1.1, 0.2, -3.1, -0.4\right], 
+&\texttt{centroid2}: 
+\left[9.3, 6.1, -4.7, 0.18\right]
+\end{aligned}
+}\right\}
+\end{align}
+$$
+
+
+
+Here, data contains three data points, where each data point is four-dimensional. And centroids contains two key-value pairs, which will eventually be updated with new locations.
+
+
+
+
+
+ You will only be working in kmeans.py for Part 1. Here is a brief overview of the steps, which are described below:
+
+Implement euclidean_distance(), which will calculate the distance between two points.
+Implement get_closest_centroid(), which allows you to find the closest centroid for a point.
+Implement update_assignment(), which sets the centroid assignment for a point.
+Implement mean_of_points(), which calculates the mean of a list of points. Also, implement update_centroids(), which will update all of the centroids to the new mean of the points assigned to them.
+Run the entire algorithm!
+Check code quality
+
+
+
+
+-------------------------
+
+
+## Part 2. Analysis
 
 
 

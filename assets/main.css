@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Signika:wght@300;400;500;600;700&display=swap');
 
 h1.title {
     font-size: 25pt;
@@ -16,7 +17,7 @@ h1.title {
 
 h2 {
     font-weight: 800;
-    font-size: 18pt;
+    font-size: 19pt;
     text-transform: uppercase;
     color: #263240;
     letter-spacing: 1px;
@@ -43,9 +44,10 @@ h4 {
     font-weight: 400;
     letter-spacing: 0.25px;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.6;
     color: #60667b;
     text-shadow: 0.15px 0.15px 0.001px hsl(0deg 0% 7% / 99%), -0.25px -0.25px 0.2px hsl(220deg 20% 85% / 75%), 0.25px 0.25px 0.25px hsl(0deg 0% 0%), -0.2px -0.2px 0.1px hsl(0deg 0% 10% / 65%), -0.5px -0.5px 0.2px hsl(0deg 0% 90% / 95%), 0.5px 0.5px 0.5px hsl(0deg 0% 70% / 95%);
+    padding-top: 62pt !important;
 }
 
 h3.subtitle {
@@ -70,6 +72,8 @@ h4.author {
     opacity: 0.5;
     color: #60667b;
     text-shadow: 0.4px 0.4px 0.4px hsl(0deg 0% 0%);
+    padding-top: unset !important;
+
 }
 
 h4.date {
@@ -81,6 +85,8 @@ h4.date {
     opacity: 0.5;
     color: #60667b;
     text-shadow: 0.4px 0.4px 0.4px hsl(0deg 0% 0%);
+    padding-top: unset !important;
+
 }
 
 /* ---- body ---- */
@@ -94,16 +100,16 @@ body {
 
 
 b, strong {
-      font-size: 9.5pt;
+    font-size: 9.5pt;
     font-weight: 500;
-    font-family: 'Roboto';
     letter-spacing: 0.5px;
     text-shadow: 0.2px 0.2px 0.2px hsl(0deg 0% 5% / 90%), 0.45px 0.45px 0.45px hsl(0deg 0% 30% / 50%) !important;
-    color: #f59e0b;
-    color: hsl(230deg 11% 49%);
     opacity: 0.85;
     color: #60667b;
-    border-bottom: 2.25px dashed rgb(239 39 153 / 90%);
+    font-family: 'Fira Sans Condensed';
+    font-weight: 600;
+    color: black;
+    border-bottom: 2.25px dashed #862d71;
 }
 
 a {
@@ -115,20 +121,20 @@ hr {
 }
 
 .myhighlight {
-  font-family: 'Roboto';
-    border-radius: 5px;
-    text-shadow: 0 1px 1px hsl(0deg 0% 10% / 65%), 0.04em 0.04em 0px hsl(0deg 0% 45% / 50%), -0.25px -0.25px 0.05px hsl(217deg 100% 95% / 85%), 0.25px 0.25px 0.25px hsl(0deg 0% 100% / 95%), 0.35px 0.35px 0.2px hsl(0deg 0% 90% / 85%), 0 -1px 0px hsl(0deg 0% 95% / 25%), 0 1px 0.125px hsl(0deg 0% 5% / 85%);
+  border-radius: 5px;
+    text-shadow: 0 1px 1.25px hsl(0deg 0% 0%), 0.04em 0.04em 0px hsl(0deg 0% 45%), -0.25px -0.25px 0.00025px hsl(217deg 1% 85% / 85%), 0.725px 0.725px 0.325px hsl(0deg 0% 10% / 95%), -0.525px -0.595px 0.325px hsl(0deg 0% 10% / 85%), 0 -1px 0px hsl(0deg 0% 95% / 35%), 0px 1px 1.5px hsl(0deg 0% 0%);
     color: #f5f5f5;
     font-size: 9pt;
     letter-spacing: 0.5px;
-    background-image: linear-gradient(-128deg, #f9f871 6%, rgba(255, 181, 32, 0.93) 14%, #f59e0b 22%, #fb923c 28%, #ff6f91 50%, #dc2626 65%, rgba(239, 39, 153, 0.93) 80%, #f321d7 90%, #d946ef 95%);
+    background-image: linear-gradient(-128deg, #FBE1B8 4%, #F3AE48 8%, #E17162 14%, #2D6E5D 16%,#1A7464 20%,#82A452 30%,#C6DA82 36% , #6BC3C9 56%,#176782 60%, #4E414B 72% ,hsl(314deg 50% 35%) 78%, #C14D7F 82%, #DB605E 88%, #F3AE4A 94%, #F0A256 96%);
     box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%), inset 1px 1px 1px hsl(0deg 0% 80% / 40%), inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px 0px rgb(255 255 255 / 60%), -1px -1px 4px 0px rgb(255 255 255 / 60%), -2px -2px 8px 0px rgb(255 255 255 / 60%), 1px 1px 1px 0px rgb(12 13 18 / 6%), 1px 1px 4px 0px rgb(12 13 18 / 6%), 2px 2px 8px 0px rgb(12 13 18 / 6%), inset -1px -1px 1px hsl(0deg 0% 0% / 20%), inset 0.5px 0.5px 1px 0 hsl(0deg 0% 100% / 25%);
     padding: 2.5pt 3.85pt;
-    font-weight: 400;
+    font-weight: 700;
+    font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 .myhighlight2 {
-      font-size: 12pt;
+  font-size: 11.5pt;
     letter-spacing: 0.5px;
     font-family: 'VT323', monospace;
     border-radius: 5px;
@@ -136,7 +142,7 @@ hr {
     background-color: hsl(228deg 14% 93%);
     text-shadow: 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0.35px 0.35px 0.35px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px rgb(12 13 18 / 8%), 0 1.2px 0 rgb(255 255 255);
     color: hsl(233deg 5% 26%);
-    padding: 2.125pt 4.125pt;
+    padding: 2pt 4.125pt;
     font-weight: 300;
     line-height: 15pt;
 }
@@ -196,14 +202,17 @@ img.poke {
 .list-group-item.active:focus,
 .list-group-item.active:hover {
     border-color: #c1f8c3;
-    background-image: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
     box-shadow: 0 1px 3.75px 0 rgb(215 150 211);
     text-shadow: 0.5px 0.5px 0.5px hsl(0deg 0% 30% / 45%);
     /* color: #333; */
     font-weight: 500;
     border-color: #d59bf1;
-    background: linear-gradient(36deg, hsl(39deg 100% 70%),hsl(12deg 100% 78%),hsl(357deg 100% 80%), hsl(341deg 86% 77%), #e694f7, hsl(324deg 100% 86%));
     background: linear-gradient(-128deg, #ffec61 6%, rgba(255, 181, 32, 0.93) 14%, #f59e0b 22%, #fb923c 28%, #ef4444 50%, #dc2626 58%, rgba(239, 39, 153, 0.93) 80%, #f321d7 90%, #d946ef 100%);
+    background: linear-gradient(-128deg, #F3AE48 8%, #E17162 16%, #2D6E5D 20%,#1A7464 28%,#82A452 32%,#C6DA82 38% ,#B6D9D1 45%, #6BC3C9 50%,#176782 55%, #4E414B 60% ,hsl(314deg 50% 35%) 70%, #C14D7F 76%, #DB605E 85%, #F3AE4A 90%,  #F0A256 94%, #FBE1B8 97%);
+    background: linear-gradient(-128deg, #F3AE48 9%, #E17162 16%, #2d6e5d 20%,#38741a 22%,#82A452 32%,#c6da82 36% ,#b6d9d1 42%, #6bc3c9 48%,#176782 55%, #4e414b 60% ,#862d71 70%, #c14d7f 76%, #db605e 85%, #f3ae4a 90%,  #F0A256 94%, #fbe1b8 97%);
+    font-weight: 700;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    text-shadow: 0 1px 1.25px hsl(0deg 0% 0%), 0.04em 0.04em 0px hsl(0deg 0% 45%), -0.25px -0.25px 0.00025px hsl(217deg 1% 85% / 85%), 0.725px 0.725px 0.325px hsl(0deg 0% 10% / 95%), -0.525px -0.595px 0.325px hsl(0deg 0% 10% / 85%), 0 -1px 0px hsl(0deg 0% 95% / 35%), 0px 1px 1.5px hsl(0deg 0% 0%);
 }
 
 #TOC {
@@ -300,6 +309,10 @@ pre {
     background: #2d2d2d;
 }
 
+pre:not([class]) {
+    background-color: #2d2d2d;
+}
+
 pre code {
     font-family: 'Inconsolata', monospace;
     /*font-family: Consolas;*/
@@ -390,27 +403,8 @@ code {
     font-size: 11pt !important;
 }
 
-.datasource2 ol li::before {
-  /*content: attr(value);*/
-  content: counter(cupcake);
-    display: inline-flex;
-    width: 16pt;
-    height: 16pt;
-    border-radius: 20px;
-    align-items: center;
-    justify-content: center;
-    background-color: #ebecf0;
-    font-family: 'VT323', monospace;
-    font-weight: 500;
-    box-shadow: 0.875px 0.875px 1.8px 0 rgb(0 0 0 / 30%), -0.875px -0.875px 1.8px 0 rgb(255 255 255), inset -0.5px -0.5px 1px 0 rgb(0 0 0 / 30%), inset 0.5px 0.5px 1px 0 rgb(255 255 255);
-    margin: 0 4pt -1.5pt -22.5pt;
-    vertical-align: bottom;
-    text-shadow: 0.25px 0.25px 0.25px hsl(233deg 5% 26% / 85%), 0.35px 0.35px 0.35px hsl(233deg 5% 26% / 85%), 0 -1.1px 0px rgb(12 13 18 / 8%), 0 1.2px 0 rgb(255 255 255);
-    color: hsl(233deg 5% 26%);
-    font-size: 12.125pt;
-    background: linear-gradient(-45deg,#fdfdfd,hsl(240deg 9% 85% / 50%),#fdfdfd);
-}
 
+/*
 .datasource2 ol li::before {
     content: counter(cupcake);
     display: inline-flex;
@@ -429,7 +423,30 @@ code {
     font-size: 11pt;
     box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%), inset 1px 1px 1px hsl(0deg 0% 80% / 40%), inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px 0px rgb(255 255 255 / 60%), -1px -1px 4px 0px rgb(255 255 255 / 60%), -2px -2px 8px 0px rgb(255 255 255 / 60%), 1px 1px 1px 0px rgb(12 13 18 / 6%), 1px 1px 4px 0px rgb(12 13 18 / 6%), 2px 2px 8px 0px rgb(12 13 18 / 6%), inset -1px -1px 1px hsl(0deg 0% 0% / 20%), inset 0.5px 0.5px 1px 0 hsl(0deg 0% 100% / 25%);
 }
+*/
 
+
+.datasource2 ol li::before {
+  content: counter(cupcake);
+    display: inline-flex;
+    width: 16pt;
+    height: 16pt;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 4pt -1.5pt -22.5pt;
+    vertical-align: bottom;
+    text-shadow: 0 1px 1px hsl(0deg 0% 10% / 65%), 0.04em 0.04em 0px hsl(0deg 0% 45% / 50%), -0.25px -0.25px 0.05px hsl(217deg 100% 95% / 85%), 0.25px 0.25px 0.25px hsl(0deg 0% 100% / 95%), 0.35px 0.35px 0.2px hsl(0deg 0% 90% / 85%), 0 -1px 0px hsl(0deg 0% 95% / 25%), 0 1px 0.125px hsl(0deg 0% 5% / 85%);
+    color: #f5f5f5;
+    font-weight: 700;
+    font-size: 11pt;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%), inset 1px 1px 1px hsl(0deg 0% 80% / 40%), inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px 0px rgb(255 255 255 / 60%), -1px -1px 4px 0px rgb(255 255 255 / 60%), -2px -2px 8px 0px rgb(255 255 255 / 60%), 1px 1px 1px 0px rgb(12 13 18 / 6%), 1px 1px 4px 0px rgb(12 13 18 / 6%), 2px 2px 8px 0px rgb(12 13 18 / 6%), inset -1px -1px 1px hsl(0deg 0% 0%);
+    background: hsl(0deg 0% 22% / 98%);
+    border: 0.15px solid hsl(0deg 0% 45%);
+    font-family: 'Signika', sans-serif;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 10pt;
+}
 
 .datasource2 ul li::before,
 .datasource2 ul ul li::before,
@@ -493,6 +510,9 @@ code {
     border-radius: 10px;
     padding: 12pt;
     margin: 12pt 0pt;
+    font-family: 'Fira Sans Condensed';
+    color: white;
+    font-weight: 400;
 }
 
 .roundedlist li::marker {
@@ -510,6 +530,18 @@ code {
     text-shadow: 0.5px 0.5px 1px black;
 }
 
+.roundedlist ol ul li {
+    counter-increment: cupcake2 !important;
+    margin-left: -2pt;
+    line-height: 17pt;
+    margin-bottom: 10pt;
+    margin-top: 2pt;
+    color: #adadad;
+    font-size: 16px;
+    text-shadow: 0.5px 0.5px 1px black;
+}
+
+
 .roundedlist ol li::before {
     content: counter(cupcake);
     display: inline-flex;
@@ -518,12 +550,44 @@ code {
     border-radius: 20px;
     align-items: center;
     font-weight: 700;
-    font-family: 'Roboto';
     font-size: 14px;
     justify-content: center;
     margin-left: -24pt;
     margin-right: 4.5pt;
-    color: hsl(204deg 90% 56%);
+    vertical-align: bottom;
+    margin-bottom: -2px;
+    text-shadow: 0 0 2.5px #000000, 1px 1px 1px rgb(0 0 0);
+    box-shadow: 0.875px 0.875px 1.8px 0 hsl(0deg 0% 0% / 30%), inset -0.875px -0.875px 1.8px 0 hsl(0deg 0% 0%), inset -0.5px -0.5px 1px 0 hsl(227deg 12% 38%), inset 0.5px 0.5px 1px 0 hsl(227deg 12% 45%);
+    background: #252528;
+    font-family: 'Oswald', sans-serif;
+    /*font-family: 'Poppins', sans-serif;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-family: 'Signika', sans-serif;*/
+    color: #FF5370;
+    color: hsl(314deg 45% 50%);
+    color: hsl(300deg 50% 56%);
+    color: hsl(74deg 65% 68%);
+    color: hsl(346deg 100% 80%);
+    font-weight: 700;
+    color: #61cad1;
+}
+
+
+.roundedlist ol ul li::before {
+    content: counter(cupcake2, lower-alpha);
+    display: inline-flex;
+    width: 15pt;
+    height: 15pt;
+    border-radius: 20px;
+    align-items: center;
+    font-weight: 500;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 15px;
+    justify-content: center;
+    margin-left: -24pt;
+    margin-right: 4.5pt;
+    color: hsl(190deg 100% 60%);
     vertical-align: bottom;
     margin-bottom: -2px;
     text-shadow: 0 0 2.5px #000000, 1px 1px 1px rgb(0 0 0);
@@ -641,17 +705,19 @@ pre.r::before {
 }
 
 .hljs-string {
-  color: #98C379;
+  /*color: #98C379;
   color: #56B6C2;
+  color: #C3E88D;*/
     text-shadow: 0.25px 0.25px 1px #111111, 0.25px 0.25px 0.5px black !important;
-    color: #C3E88D;
     font-weight: 300;
+    color: #82a452;
 }
 
 .hljs-bashkey {
-    color: #F78C6C;
-    color: #C792EA;
-    font-weight: 800;
+  font-weight: 900;
+  color: hsl(300deg 50% 56%);
+    /* color: #862d71; */
+    /* color: hsl(314deg 45% 50%); */
 }
 
 .hljs-built_in, .hljs-models {
@@ -674,15 +740,20 @@ pre.r::before {
 .hljs-pypd {
     color: #89DDFF;
     font-weight: 500;
+    color: hsl(334deg 80% 58%);
 }
 
 .hljs-myfunc {
-  color: #FF5370;
+  /*color: #FF5370;*/
+  font-weight: 600;
+  color: #61cad1;
 }
 
 .hljs-pyfunc {
-    color: #FFCB6B;
-    font-weight: 600;
+    /*color: #FFCB6B;
+    color: #C792EA;*/
+    font-weight: 700;
+    color: hsl(74deg 65% 68%)
 }
 
 .hljs-literal {
