@@ -1,12 +1,12 @@
 hljs.registerLanguage("python",function(e){
   var t={
-    keyword: "and elif is global as in if from raise for except finally import pass return exec else break not with class assert yield try while continue del or def lambda async await nonlocal|10 None",
-    built_in:"Ellipsis NotImplemented",
-    pykey: "parse",
+    keyword: "and elif is global as in if from raise except finally import pass exec else break not with class assert yield try while continue del or lambda async await nonlocal|10 None",
+    pybuilt: "for in return",
+    pykey: "parse print len",
     logc: "True False",
-    pyfunc:  "print",
-    pypd: "read_csv",
-    myfunc: "species_count"
+    pyfunc:  "range list",
+    pypd: "read_csv def",
+    myfunc: "euclidean_distance"
   },
   r={cN:"meta",b:/^(>>>|\.\.\.) /},
   a={cN:"subst",b:/\{/,e:/\}/,k:t,i:/#/},

@@ -32,9 +32,11 @@ source("data.R")
 
 
 
-<span class = "myhighlight">Overview:</span> Using Python, we implement a program to process and analyze data for Pokémon Go, an augmented-reality video game played by hundreds of millions of people. The problems in this assessment focus on providing descriptive statistics for summarizing the Pokémon dataset.
+<span class = "myhighlight">Overview:</span> Using Python, the project goal is to implement a k-means clustering algorithm, a technique often used in machine learning, and use it for data analysis. We write various functions making use of lists, sets, dictionaries, sorting, and graph data structures for computational problem solving and analysis.
 
 
+
+<span class = "myhighlight4">Overview:</span> The project goal is to implement a Python program that reads Spotify data and makes music recommendations. We write various functions making use of sets, dictionaries, sorting, and graph data structures to analyze Spotify data.
 
 
 
@@ -300,17 +302,167 @@ $$
 Here, data contains three data points, where each data point is four-dimensional. And centroids contains two key-value pairs, which will eventually be updated with new locations.
 
 
+Below is a brief overview of the steps Part 1.
+
+
+<div class = "datasource2">
+
+1. Implement euclidean_distance(), which will calculate the distance between two points.
+2. Implement get_closest_centroid(), which allows you to find the closest centroid for a point.
+3. Implement update_assignment(), which sets the centroid assignment for a point.
+4. Implement mean_of_points(), which calculates the mean of a list of points. 
+5. Implement update_centroids(), which will update all of the centroids to the new mean of the points assigned to them.
+</div>
 
 
 
- You will only be working in kmeans.py for Part 1. Here is a brief overview of the steps, which are described below:
+-------------------------
 
-Implement euclidean_distance(), which will calculate the distance between two points.
-Implement get_closest_centroid(), which allows you to find the closest centroid for a point.
-Implement update_assignment(), which sets the centroid assignment for a point.
-Implement mean_of_points(), which calculates the mean of a list of points. Also, implement update_centroids(), which will update all of the centroids to the new mean of the points assigned to them.
-Run the entire algorithm!
-Check code quality
+
+
+### Calculating Euclidean distances
+
+
+Implement euclidean_distance() using the euclidean distance formula to calculate the distance between two points:
+
+
+```python
+def euclidean_distance(point1, point2):
+    """
+    Calculate the Euclidean distance between two data points.
+
+    Arguments:
+        point1: a non-empty list of floats representing a data point
+        point2: a non-empty list of floats representing a data point
+
+    Returns: the Euclidean distance between two data points
+    """
+    
+    # Sum of squared difference between coordinates
+    sum_of_squares = 0
+    
+    # Number of dimensions
+    for n in range(len(point1)):
+        
+        a_n = point1[n]
+        b_n = point2[n]
+        
+        sum_of_squares += (a_n - b_n) ** 2
+    
+    # Square root of sum of squared difference
+    return sum_of_squares ** 0.5
+    
+```
+
+
+
+Example:
+Code:
+point1 = [1.1, 1, 1, 0.5]
+point2 = [4, 3.14, 2, 1]
+print(euclidean_distance(point1, point2))
+Output: 3.7735394525564456
+            
+            
+
+
+
+-------------------------
+
+
+
+### Assigning data points to closest centroids
+
+
+Implement get_closest_centroid() to find the closest centroid for a data point:
+
+
+```python
+# Assigning data points to closest centroids
+def get_closest_centroid(point, centroids_dict):
+    """
+    Find the closest centroid given a data point using the
+    euclidean_distance function implemented above.
+
+    Arguments:
+        point: a list of floats representing a data point
+        centroids_dict: a dictionary representing the centroids such that
+                        the keys are strings of centroid names and
+                        the values are lists of centroid locations
+
+    Returns: the key name (a string) of the closest centroid to the data point
+    """
+    
+    # List all keys from dictionary
+    centroid_names = list(centroids_dict.keys())
+    minimum_distance = 0
+    
+    for centroid in centroid_names:
+        
+        # Access centroid value from key name
+        centroid_location = centroids_dict[centroid]
+
+        # Get euclidean distance between datapoint and centroid
+        new_distance = euclidean_distance(point, centroid_location)
+
+        if minimum_distance == 0 or new_distance < minimum_distance:
+            
+            # Smallest euclidean distance and corresponding centroid name
+            minimum_distance = new_distance
+            closest_centroid = centroid
+
+    # Key name of closest centroid to the data point
+    return closest_centroid
+```
+
+
+
+Example:
+Code: 
+point = [0, 0, 0, 0]
+centroids_dict = {"centroid1": [1, 1, 1, 1],
+"centroid2": [2, 2, 2, 2]}
+
+print(get_closest_centroid(point, centroids_dict))
+Output: centroid1
+
+
+
+
+
+-------------------------
+
+### Update assignment of points to centroids
+
+
+
+Implement update_assignment() to assign data points to their closest centroid:
+
+
+-------------------------
+
+
+### Update centroids
+
+
+Info
+
+Do not modify list_of_points or hard-code the dimensionality of the data. Your code should be able to run on data points with any dimension.
+
+Implement mean_of_points() to find the average of a cluster:
+
+Then, implement the update_centroids() to update the centroid to be the average of the clusters:
+
+
+
+-------------------------
+
+
+### Clustering 2D points
+
+
+Now that you have completed all parts needed to run your k-means clustering algorithm, we can now run it on actual data. At the very bottom of kmeans.py you should see code like this:
+
 
 
 
